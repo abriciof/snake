@@ -1,3 +1,3 @@
 # snake
 
-<a href="https://snakeyeah.herokuapp.com/">
+<a href="https://snakeyeah.herokuapp.com/"/>
