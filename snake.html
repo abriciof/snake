@@ -8,9 +8,24 @@
 	
 </head>
 
-<body style="background-color: rgb(22, 21, 21);">
-	<div class="a" style="text-align: center;" >
-		<div class="b" style="margin-top: 220px;">
+<body style="background-color: rgb(31, 30, 30);">
+	<div class="titulo" style="text-align: center; margin-top: 10vh; font-size: 25px;" >
+		<h1 style="color:rgb(196, 47, 21)">
+			𝕤𝕟𝕒𝕜𝕖𝕪𝕖𝕒𝕙
+			
+		</h1>
+		
+		<form style="margin-top: 5vh;">
+			<label style="color:rgb(208, 226, 43); font-size: 30px;">Pontos:</label>
+			<input type="text" id="pt" value="0" style="text-align: left; background-color: rgb(31, 30, 30); border: 0; color: rgb(208, 226, 43); font-size: 27px; 
+			width: 40px;">
+		</form>
+		
+	</div>
+
+	<!-- margin-top: 220px; -->
+	<div class="a" style="text-align: center; margin-top: 10vh;" >
+		<div class="b" style=""> 
 			<canvas id="gc" width="400" height="400"></canvas>
 		</div>	
 		
@@ -35,6 +50,9 @@ xv=yv=0;
 trail=[];
 tail = 5;
 pontos = 0;
+
+let pnts = document.getElementById('pt');
+
 function game() {
 	px+=xv;
 	py+=yv;
@@ -58,8 +76,10 @@ function game() {
 		ctx.fillRect(trail[i].x*gs,trail[i].y*gs,gs-2,gs-2);
 		if(trail[i].x==px && trail[i].y==py) {
 			tail = 5;
-			console.log("------NOVO JOGO------");
 			pontos = 0;
+			// console.log("------NOVO JOGO------");
+			pnts.value = pontos;
+			
 		}
 	}
 	trail.push({x:px,y:py});
@@ -70,7 +90,8 @@ function game() {
 	if(ax==px && ay==py) {
 		tail++;
 		pontos++;
-		console.log("pontos:", pontos)
+		pnts.value = pontos;
+		// console.log("pontos:", pontos)
 		ax=Math.floor(Math.random()*tc);
 		ay=Math.floor(Math.random()*tc);
 	}
