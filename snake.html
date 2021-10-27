@@ -34,6 +34,7 @@ ax=ay=15;
 xv=yv=0;
 trail=[];
 tail = 5;
+pontos = 0;
 function game() {
 	px+=xv;
 	py+=yv;
@@ -66,6 +67,7 @@ function game() {
 
 	if(ax==px && ay==py) {
 		tail++;
+		console.log("pontos:", pontos)
 		ax=Math.floor(Math.random()*tc);
 		ay=Math.floor(Math.random()*tc);
 	}
