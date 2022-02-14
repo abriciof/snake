@@ -60,11 +60,7 @@ record = localStorage.getItem("info");
 
 let pnts = document.getElementById('pt');
 let rec = document.getElementById('hs');
-	if(localStorage.getItem("info")){
-		rec.value = localStorage.getItem("info");
-	}else{
-		rec.value = 0;
-	}
+
 
 function game() {
 	px+=xv;
@@ -93,10 +89,13 @@ function game() {
 			
 			// console.log("------NOVO JOGO------");
 			// vericando se há recorde novo
-			if(pontos>record)
+			if(pontos!=0){
+				if(pontos>record)
 				localStorage.info=pontos;
 				rec.value = localStorage.info;
 				record = pontos;
+			}
+			
 
 			// zerando pontuação atual
 			pontos=0;
