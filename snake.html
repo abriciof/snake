@@ -16,8 +16,11 @@
 		</h1>
 		
 		<form style="margin-top: 5vh;">
-			<label style="color:rgb(208, 226, 43); font-size: 30px;">Pontos:</label>
+			<label for="pt" style="color:rgb(208, 226, 43); font-size: 30px;">Pontos:</label>
 			<input type="text" id="pt" value="0" style="text-align: left; background-color: rgb(31, 30, 30); border: 0; color: rgb(208, 226, 43); font-size: 27px; 
+			width: 50px;">
+			<label for="hs" style="color:rgb(208, 226, 43); font-size: 30px;">Recorde:</label>
+			<input type="text" id="hs" value="0" style="text-align: left; background-color: rgb(31, 30, 30); border: 0; color: rgb(208, 226, 43); font-size: 27px; 
 			width: 50px;">
 		</form>
 		
@@ -37,11 +40,13 @@
 
 
 <script>
+
 window.onload=function() {
 	canv=document.getElementById("gc");
 	ctx=canv.getContext("2d");
 	document.addEventListener("keydown",keyPush);
 	setInterval(game,1000/15);
+	
 }
 px=py=10;
 gs=tc=20;
@@ -50,8 +55,16 @@ xv=yv=0;
 trail=[];
 tail = 5;
 pontos = 0;
+record = localStorage.getItem("info");
+
 
 let pnts = document.getElementById('pt');
+let rec = document.getElementById('hs');
+	if(localStorage.getItem("info")){
+		rec.value = localStorage.getItem("info");
+	}else{
+		rec.value = 0;
+	}
 
 function game() {
 	px+=xv;
@@ -76,9 +89,19 @@ function game() {
 		ctx.fillRect(trail[i].x*gs,trail[i].y*gs,gs-2,gs-2);
 		if(trail[i].x==px && trail[i].y==py) {
 			tail = 5;
-			pontos = 0;
+	
+			
 			// console.log("------NOVO JOGO------");
+			// vericando se há recorde novo
+			if(pontos>record)
+				localStorage.info=pontos;
+				rec.value = localStorage.info;
+				record = pontos;
+
+			// zerando pontuação atual
+			pontos=0;
 			pnts.value = pontos;
+
 			
 		}
 	}
@@ -90,7 +113,10 @@ function game() {
 	if(ax==px && ay==py) {
 		tail++;
 		pontos++;
+		
 		pnts.value = pontos;
+		
+
 		// console.log("pontos:", pontos)
 		ax=Math.floor(Math.random()*tc);
 		ay=Math.floor(Math.random()*tc);
@@ -126,4 +152,5 @@ function keyPush(evt) {
 			break;		
 	}
 }
+
 </script>
