@@ -60,6 +60,10 @@ record = localStorage.getItem("info");
 
 let pnts = document.getElementById('pt');
 let rec = document.getElementById('hs');
+if(localStorage.info){
+	rec.value = localStorage.getItem("info");
+}
+
 
 
 
@@ -96,8 +100,6 @@ function game() {
 				localStorage.info=pontos;
 				rec.value = localStorage.info;
 				record = pontos;
-			}else{
-				localStorage.info=record;
 			}
 			
 
