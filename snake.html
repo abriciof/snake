@@ -62,6 +62,8 @@ let pnts = document.getElementById('pt');
 let rec = document.getElementById('hs');
 
 
+
+
 function game() {
 	px+=xv;
 	py+=yv;
@@ -94,6 +96,8 @@ function game() {
 				localStorage.info=pontos;
 				rec.value = localStorage.info;
 				record = pontos;
+			}else{
+				localStorage.info=record;
 			}
 			
 
