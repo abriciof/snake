@@ -96,10 +96,12 @@ function game() {
 			// console.log("------NOVO JOGO------");
 			// vericando se há recorde novo
 			if(pontos!=0){
-				if(pontos>record)
-				localStorage.info=pontos;
-				rec.value = localStorage.info;
-				record = pontos;
+				if(pontos>record){
+					localStorage.info=pontos;
+					rec.value = localStorage.info;
+					record = pontos;
+				}
+				
 			}
 			
 
